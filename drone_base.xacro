@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot
+  name="drone_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:property name="PI" value="3.14159265359"/>
+
+  <xacro:include filename="$(find drone_description)/urdf/drone_macros.xacro" />
+
+  <!-- LINKS -->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="5.7334E-07 0.026879 0.015324"
+        rpy="0 0 0" />
+      <mass
+        value="0.38016" />
+      <inertia
+        ixx="0.00029212"
+        ixy="-1.331E-09"
+        ixz="-3.9126E-08"
+        iyy="0.00040699"
+        iyz="1.6869E-06"
+        izz="0.00015798" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drone_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drone_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="camera">
+    <inertial>
+      <origin
+        xyz="-0.0036143 0.00349 0.00925"
+        rpy="0 0 0" />
+      <mass
+        value="0.090718" />
+      <inertia
+        ixx="2.4903E-06"
+        ixy="3.2829E-09"
+        ixz="8.2525E-22"
+        iyy="3.279E-06"
+        iyz="-1.531E-21"
+        izz="2.3388E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drone_description/meshes/camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drone_description/meshes/camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- JOINT -->
+  <joint
+    name="camera_joint"
+    type="revolute">
+    <origin
+      xyz="0.00925 0.059965 0.0165"
+      rpy="1.5708 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <xacro:prop_link name="front_left_prop" />
+  <xacro:prop_link name="front_right_prop" />
+  <xacro:prop_link name="back_left_prop" />
+  <xacro:prop_link name="back_right_prop" />
+
+  <xacro:prop_joint name="front_left_prop" originxyz="-0.092959 0.073449 0.0385"/>
+  <xacro:prop_joint name="front_right_prop" originxyz="0.092959 0.073449 0.0385"/>
+  <xacro:prop_joint name="back_left_prop" originxyz="-0.093338 -0.10988 0.0385"/>
+  <xacro:prop_joint name="back_right_prop" originxyz="0.093338 -0.10988 0.0385"/>
+</robot>
