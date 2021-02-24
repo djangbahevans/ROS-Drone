@@ -47,14 +47,4 @@
     </transmission>
   </xacro:macro>
 
-  <!-- <transmission name="camera">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="camera_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="camera_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </actuator>
-  </transmission> -->
 </robot>

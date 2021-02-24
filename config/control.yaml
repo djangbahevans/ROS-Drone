@@ -25,7 +25,7 @@ joint_motor_controller:
 #     back_left_prop_joint: {p: 10000, i: 1, d: 1000}
 #     back_right_prop_joint: {p: 10000, i: 1, d: 1000}
 # Position Controller
-# camera_joint_position_controller:
-#   type: position_controllers/JointPositionController
-#   joint: camera_joint
-#   pid: {p: 10000.0, i: 1, d: 1000.0}
+camera_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: camera_joint
+  pid: {p: 10000.0, i: 1, d: 1000.0}

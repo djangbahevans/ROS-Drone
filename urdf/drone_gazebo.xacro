@@ -7,22 +7,23 @@
     </plugin>
   </gazebo>
 
-  <!-- lIFT DRAG -->
+  <!-- LIFT DRAG -->
   <xacro:macro name="propeller_plugin" params="name dir">
     <gazebo>
-      <plugin name="${name}_lift" filename="libliftDragPlugin.so">
+      <!-- Provide a Positive Velocity -->
+      <plugin name="${name}_lift" filename="libLiftDragPlugin.so">
         <a0>0.1</a0>
         <cla>0.1</cla>
         <cda>0.01</cda>
         <cma>0.0</cma>
-        <alpha_stall>0.3368</alpha_stall>
-        <cla_stall>-2.1419</cla_stall>
-        <cda_stall>0.0</cda_stall>
+        <alpha_stall>1.0472</alpha_stall>
+        <cla_stall>-0.2</cla_stall>
+        <cda_stall>1.0</cda_stall>
         <cma_stall>0.0</cma_stall>
         <cp>0 0.5 0</cp>
-        <area>0.01</area>
+        <area>0.70</area>
         <air_density>1.2041</air_density>
-        <forward>-1 0 0</forward>
+        <forward>1 0 0</forward>
         <upward>0 0 ${dir}</upward>
         <link_name>${name}</link_name>
         <control_joint>${name}_joint</control_joint>

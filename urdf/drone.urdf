@@ -60,6 +60,16 @@
       </plugin>
     </sensor>
   </gazebo>
+  <gazebo name="front_left_prop_joint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libgazebo_ros_ft_sensor.so" name="ft_sensor">
+      <updateRate>100.0</updateRate>
+      <topicName>prop1_sensor</topicName>
+      <jointName>front_left_prop_joint</jointName>
+    </plugin>
+  </gazebo>
   <!-- DUMMY lINK -->
   <link name="dummy_link"/>
   <!-- LINKS -->
@@ -218,13 +228,13 @@
     <origin rpy="0 0 0" xyz="0.092959 0.073449 0.0385"/>
     <parent link="base_link"/>
     <child link="front_right_prop"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
   </joint>
   <joint name="back_left_prop_joint" type="continuous">
     <origin rpy="0 0 0" xyz="-0.093338 -0.10988 0.0385"/>
     <parent link="base_link"/>
     <child link="back_left_prop"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
   </joint>
   <joint name="back_right_prop_joint" type="continuous">
     <origin rpy="0 0 0" xyz="0.093338 -0.10988 0.0385"/>
@@ -274,7 +284,6 @@
   </transmission>
   <gazebo>
     <plugin filename="libliftDragPlugin.so" name="front_left_prop_lift">
-      <!-- taken from the lift curve figure -->
       <a0>0.1</a0>
       <cla>0.1</cla>
       <cda>0.01</cda>
@@ -284,9 +293,9 @@
       <cda_stall>0.0</cda_stall>
       <cma_stall>0.0</cma_stall>
       <cp>0 0.5 0</cp>
-      <area>0.762</area>
+      <area>0.01</area>
       <air_density>1.2041</air_density>
-      <forward>1 0 0</forward>
+      <forward>-1 0 0</forward>
       <upward>0 0 1</upward>
       <link_name>front_left_prop</link_name>
       <control_joint>front_left_prop_joint</control_joint>
@@ -294,7 +303,6 @@
   </gazebo>
   <gazebo>
     <plugin filename="libliftDragPlugin.so" name="front_right_prop_lift">
-      <!-- taken from the lift curve figure -->
       <a0>0.1</a0>
       <cla>0.1</cla>
       <cda>0.01</cda>
@@ -304,17 +312,16 @@
       <cda_stall>0.0</cda_stall>
       <cma_stall>0.0</cma_stall>
       <cp>0 0.5 0</cp>
-      <area>0.762</area>
+      <area>0.01</area>
       <air_density>1.2041</air_density>
-      <forward>1 0 0</forward>
-      <upward>0 0 1</upward>
+      <forward>-1 0 0</forward>
+      <upward>0 0 -1</upward>
       <link_name>front_right_prop</link_name>
       <control_joint>front_right_prop_joint</control_joint>
     </plugin>
   </gazebo>
   <gazebo>
     <plugin filename="libliftDragPlugin.so" name="back_left_prop_lift">
-      <!-- taken from the lift curve figure -->
       <a0>0.1</a0>
       <cla>0.1</cla>
       <cda>0.01</cda>
@@ -324,17 +331,16 @@
       <cda_stall>0.0</cda_stall>
       <cma_stall>0.0</cma_stall>
       <cp>0 0.5 0</cp>
-      <area>0.762</area>
+      <area>0.01</area>
       <air_density>1.2041</air_density>
-      <forward>1 0 0</forward>
-      <upward>0 0 1</upward>
+      <forward>-1 0 0</forward>
+      <upward>0 0 -1</upward>
       <link_name>back_left_prop</link_name>
       <control_joint>back_left_prop_joint</control_joint>
     </plugin>
   </gazebo>
   <gazebo>
-    <plugin filename="libliftDragPlugin.so" name="back_right_prop_lift">
-      <!-- taken from the lift curve figure -->
+    <plugin filename="libLiftDragPlugin.so" name="back_right_prop_lift">
       <a0>0.1</a0>
       <cla>0.1</cla>
       <cda>0.01</cda>
@@ -344,9 +350,9 @@
       <cda_stall>0.0</cda_stall>
       <cma_stall>0.0</cma_stall>
       <cp>0 0.5 0</cp>
-      <area>0.762</area>
+      <area>0.01</area>
       <air_density>1.2041</air_density>
-      <forward>1 0 0</forward>
+      <forward>-1 0 0</forward>
       <upward>0 0 1</upward>
       <link_name>back_right_prop</link_name>
       <control_joint>back_right_prop_joint</control_joint>
